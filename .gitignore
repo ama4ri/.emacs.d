@@ -32,4 +32,7 @@ Temporary Items
 # Exclude Emacs repo
 el-get
 elpa
+ido.last
+ido.last~
+auto-save-list
 # End of https://www.gitignore.io/api/osx
