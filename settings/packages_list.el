@@ -11,6 +11,7 @@
       company-restclient
       dap-mode
       el-get
+      helm
       emacs-fish
       emmet-mode
       expand-region
@@ -23,13 +24,30 @@
       lsp-treemacs
       lsp-ui
       magit
-      org-mode
       web-mode
       which-key
       yaml-mode
       yasnippet
       yasnippet-snippets
       )
+)
+
+(when (executable-find "python")
+    (add-to-list 'packages 'pip-requirements)
+    (when (executable-find "autopep8")
+      (add-to-list 'packages 'py-autopep8)
+      )
+    ;;(add-to-list 'packages 'py-isort)
+    ;;(when (executable-find "virtualenv")
+    ;;  (add-to-list 'packages 'auto-virtualenv))
+
+    ;; (when (executable-find "virtualenvwrapper")
+    ;;   (add-to-list 'packages 'auto-virtualenvwrapper))
+)
+
+(when (executable-find "docker")
+    (add-to-list 'packages 'dockerfile-mode)
+    ;(add-to-list 'packages 'docker-compose-mode)
 )
 
 
@@ -52,10 +70,41 @@
         ("marmalade"    .  200)))
 
 
-;; If there are no archived package contents, refresh them
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
 ;; Initializes the package infrastructure
-(package-initialize t)
+(package-initialize)
+
+;; Install el-get if nesessary
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil t)
+
+;; Install packages from elpa
+(package-refresh-contents)
+(setq elpa-packages 
+        '(
+            el-get
+            py-isort
+            async
+            jsonrpc
+            cl-lib
+            memorize
+            flymake
+            ))
+(packege-install elpa-packages)
+
+(message "require is")
+(require 'el-get)
+  (el-get 'sync))
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
+
+(el-get 'sync packages)
+
+(require 'el-get-elpa)
+;; Build the El-Get copy of the package.el packages if we have not
+;; built it before.  Will have to look into updating later ...
+(unless (file-directory-p el-get-recipe-path-elpa)
+  (el-get-elpa-build-local-recipes))
+
 (provide 'packages_list)
+

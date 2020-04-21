@@ -1879,7 +1879,7 @@
 		       ((emacs
 			 (24)))
 		       "Quick toggle controls at a key-stroke" single])
- (my-packages .
+ (packages .
 	      [(0 1 0)
 	       nil "Package Initialization." single])
  (mwe-log-commands .

@@ -1,0 +1,11 @@
+(:name tree-mode
+       :website "https://github.com/emacsmirror/emacswiki.org/blob/master/tree-mode.el"
+       :description "tree mode library"
+       :type github
+       :pkgname "emacsmirror/emacswiki.org"
+;;       :prepare (autoload 'js2-mod "js2-mode" nil t)
+ ;;      :post-init (progn
+ ;;                   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+ ;;                   'prettier-js-mode
+ ;;                   (setq js2-basic-offset 2))
+            )

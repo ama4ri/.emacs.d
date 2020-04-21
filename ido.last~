@@ -1,0 +1,40 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/" . "amauri/")
+ ("/" . "Users/")
+ ("/opt/ansible/lab/" . "playbook/")
+ ("/opt/ansible/" . "lab/")
+ ("/opt/" . "ansible/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/amauri/.emacs.d/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init.el"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/amauri/.emacs.d/" (24222 50233 541266 549000) "themes/" ".git/" "elpa/" "el-get/" "network-security.data" "recipes/" ".gitignore" "README.md" "init.el" "auto-save-list/" "settings/" "../" "./")
+
+ ("/opt/ansible/lab/playbook/" (24129 23514 938177 883000) "../" "./")
+
+ ("/opt/ansible/lab/" (24129 23584 251599 194000) "inventory" "playbook/" "../" "./")
+
+ ("/opt/ansible/" (24129 23494 662057 752000) "lab/" "../" "./")
+
+ ("/opt/" (24129 23480 79965 296000) "custom/" "ip" "ip.bak" "X11/" "scripts/" "ansible/" "local/" "cisco/" "cagami/" "templatesHuawei/" "notify/" "../" "./")
+
+ ("/Users/" (23953 4748 0 0) "Guest/" "Shared/" "amauri/" ".localized" "../" "./")
+
+ ("/Users/amauri/" (24222 50233 540723 104000) ".3T/" "PlayOnMac's virtual drives/" ".viminfo" ".bash_history" ".soapuios/" ".cache/" ".python_history" "Downloads/" "Bitrix24/" ".Xauthority" ".bash_profile" ".anydesk/" "Documents/" ".BurpSuite/" ".Trash/" ".bxd/" ".jenv/" ".profile" "Applications/" ".vimrc" "Movies/" ".ssh/" "#TUTORIAL#" ".openvpn-connect.json" ".cisco/" "SoapUI-Tutorials/" ".datastudio/" "Public/" "PycharmProjects/" "#.emacs#" ".serverauth.34870" ".bash_sessions/" ".cups/" ".emacs.d/" ".oracle_jre_usage/" "soapui-settings.xml" ".lesshst" "key" "Library/" "Desktop/" ".rnd" ".java-version" "Pictures/" ".local/" "OneDrive/" ".ApacheDirectoryStudio/" ".wget-hsts" "emacs_libs/" ".CFUserTextEncoding" "default-soapui-workspace.xml" ".gnupg/" ".DS_Store" ".vim/" ".anyconnect" "TUTORIAL" "ssl/" ".gnupg_pre_2.1/" "c_15383878157606703.ts" "vstore.dat" "Music/" ".config/" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

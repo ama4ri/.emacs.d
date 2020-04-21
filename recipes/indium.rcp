@@ -1,0 +1,8 @@
+(:name indium
+       :description ""
+       :website "https://github.com/NicolasPetton/Indium"
+       :type github
+       :depends (company-mode websocket js2-mode)
+       :pkgname "NicolasPetton/Indium"
+       :features ("indium")
+       :post-init (add-hook 'js-mode-hook #'indium-interaction-mode))

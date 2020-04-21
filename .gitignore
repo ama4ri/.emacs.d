@@ -29,4 +29,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Exclude Emacs repo
+el-get
+elpa
 # End of https://www.gitignore.io/api/osx
