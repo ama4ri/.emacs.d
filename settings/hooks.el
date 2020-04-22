@@ -5,6 +5,15 @@
                                       (setq company-backends (list comp-back)))
 )
 
+;; remote editor hooks
+;;(add-hook 'shell-mode-hook  'with-editor-export-editor)
+;;(add-hook 'term-mode-hook   'with-editor-export-editor)
+;;(add-hook 'eshell-mode-hook 'with-editor-export-editor)
+;;(add-hook 'shell-mode-hook 'add-mode-line-dirtrack)
+;;(setq ssh-mode-hook 'ssh-directory-tracking-mode)
+
+
+
 ;; Python mode
 (defun my-merge-imenu ()
   (interactive)

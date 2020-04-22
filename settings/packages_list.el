@@ -17,6 +17,7 @@
       expand-region
       flycheck
       git-gutter
+      eshell
       json-mode
       less-css-mode
       lsp-java
@@ -84,6 +85,8 @@
         '(
             el-get
             py-isort
+            tramp
+            with-editor
             async
             jsonrpc
             cl-lib

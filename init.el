@@ -1,3 +1,4 @@
+(server-start)
 (package-initialize t)
 
 (add-to-list 'load-path (expand-file-name "settings" "~/.emacs.d/"))  ;; "~/.emacs.d/"))
@@ -7,7 +8,6 @@
 (require 'packages_list)
 (require 'scratch)
 (require 'hooks)
-(require 'scratch)
 
 ;; use special theme
 (load-theme 'taming-mr-arneson t t)

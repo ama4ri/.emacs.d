@@ -5,6 +5,30 @@
 (global-set-key "\C-cl" 'org-store-link)
 (add-to-list 'auto-mode-alist '("\\.org$" . Org-mode)) ;; ассоциируем *.org файлы с org-mode
 
+
+
+
+;; Test config
+;;(setq split-height-threshold  nil
+;;      split-width-threshold   0)
+
+;;(if (equal nil (equal major-mode 'org-mode))
+;;    (windmove-default-keybindings 'meta))
+
+;;(recentf-mode 1)
+;;(setq recentf-max-menu-items      150
+;;      recentf-max-saved-items     550)
+
+;; Show paren
+;;(setq show-paren-delay 0
+;;      show-paren-style 'expression)
+;;(show-paren-mode 2)
+
+;; end of test config
+
+(setq tramp-default-method "ssh")
+
+
 ;; Emacs appearance
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -14,7 +38,16 @@
 ;; Display the name of the current buffer in the title bar
 (setq frame-title-format "%b")
 
+;; Full mailing address of user
+(setq-default user-full-name   "amauri"
+              user-mail-adress "alex.shilov@outlook.com")
 
+;; Set zsh as default shell
+(setq shell-file-name           "/bin/zsh"
+      explicit-shell-file-name  "/bin/zsh")
+
+(require 'dired)
+(setq dired-recursive-deletes 'top)
 
 ;; Imenu
 (require 'imenu)
