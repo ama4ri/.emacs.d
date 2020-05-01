@@ -5,32 +5,33 @@
 
 (setq packages
     '(
-      material-theme
       company-flx
       company-mode
       company-restclient
+      jedi-core
+      elpy
       dap-mode
-      el-get
-      helm
-      emacs-fish
-      emmet-mode
-      expand-region
-      flycheck
-      git-gutter
-      eshell
-      json-mode
-      less-css-mode
+;;      helm
       lsp-java
       lsp-mode
       lsp-treemacs
       lsp-ui
+      json-mode
+      less-css-mode
+      lsp-java
+      lsp-mode
       magit
       web-mode
       which-key
       yaml-mode
       yasnippet
       yasnippet-snippets
-      )
+      treemacs
+      treemacs-icons-dired
+      treemacs-magit
+      treemacs-projectile
+       undo-tree
+        )
 )
 
 (when (executable-find "python")
@@ -38,7 +39,7 @@
     (when (executable-find "autopep8")
       (add-to-list 'packages 'py-autopep8)
       )
-    ;;(add-to-list 'packages 'py-isort)
+    (add-to-list 'packages 'py-isort)
     ;;(when (executable-find "virtualenv")
     ;;  (add-to-list 'packages 'auto-virtualenv))
 
@@ -72,35 +73,47 @@
 
 
 ;; Initializes the package infrastructure
-(package-initialize)
 
 ;; Install el-get if nesessary
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
 
-(unless (require 'el-get nil t)
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
 
 ;; Install packages from elpa
 (package-refresh-contents)
 (setq elpa-packages 
         '(
-            el-get
             py-isort
             tramp
             with-editor
             async
             jsonrpc
             cl-lib
-            memorize
-            flymake
+            ;; dired mode extention
+            dired-launch
             ))
-(packege-install elpa-packages)
+;; package unknown -    memorize, flymake
+
+
+(dolist (package elpa-packages)
+  (unless (package-installed-p package)
+    (package-install package)))
+
 
 (message "require is")
 (require 'el-get)
-  (el-get 'sync))
+  (el-get 'sync)
 
-(add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
+;;(add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
 
+(package-initialize)
 (el-get 'sync packages)
 
 (require 'el-get-elpa)

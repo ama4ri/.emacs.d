@@ -32,6 +32,8 @@ Temporary Items
 # Exclude Emacs repo
 el-get
 elpa
+tramp
+recipes
 ido.last
 ido.last~
 auto-save-list

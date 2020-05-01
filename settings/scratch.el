@@ -43,11 +43,31 @@
               user-mail-adress "alex.shilov@outlook.com")
 
 ;; Set zsh as default shell
-(setq shell-file-name           "/bin/zsh"
-      explicit-shell-file-name  "/bin/zsh")
+;;(setq shell-file-name           "/bin/zsh"
+;;      explicit-shell-file-name  "/bin/zsh")
 
+;; Dired mode settings
 (require 'dired)
 (setq dired-recursive-deletes 'top)
+
+;;(require 'dired-x)
+;; allow dired to delete or copy dir
+(setq dired-recursive-copies (quote always)) ; “always” means no asking
+(setq dired-recursive-deletes (quote top)) ; “top” means ask once
+
+;; https://github.com/thomp/dired-launch
+(dired-launch-enable)
+;; use xdg-open as the default launcher
+;;(setq dired-launch-default-launcher '("xdg-open"))
+;;Example
+;;(setf dired-launch-extensions-map
+;;      '(;; specify LibreOffice as the preferred application for
+        ;; a Microsoft Excel file with the xslx extension
+;;        ("xlsx" ("libreofficedev5.3"))
+        ;; specify LibreOffice and Abiword as preferred applications for
+        ;; an OpenDocument text file with the odt extension
+;;        ("odt" ("libreofficedev5.3" "abiword"))))
+
 
 ;; Imenu
 (require 'imenu)

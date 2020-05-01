@@ -15,6 +15,7 @@
 
 
 ;; Python mode
+(elpy-enable)
 (defun my-merge-imenu ()
   (interactive)
   (let ((mode-imenu (imenu-default-create-index-function))
@@ -45,7 +46,7 @@
                                      indent-tabs-mode                           nil
                                      tab-width                                  4
                                      python-indent                              4
-                                     python-shell-interpreter                   "python"
+                                     python-shell-interpreter                   "python3"
                                      )
 
                                (defun python-startup-function (start end &optional send-main msg)
@@ -81,17 +82,17 @@
                                )))
 
 ;; Lisp mode
-(add-hook 'emacs-lisp-mode-hook '(lambda()
-                                   (progn
-                                     (define-key emacs-lisp-mode-map (kbd "RET") 'newline-and-indent)
-                                     (define-key lisp-interaction-mode-map (kbd "RET") 'newline-and-indent)
-                                     (define-key emacs-lisp-mode-map (kbd "M-RET") 'newline)
-                                     (define-key lisp-interaction-mode-map (kbd "M-RET") 'newline)
-                                     (eval-after-load "company"
-                                       '(progn
-                                          (my-change-company-backends 'company-elisp)
-                                          ))
-                                     )))
+;;(add-hook 'emacs-lisp-mode-hook '(lambda()
+;;                                   (progn
+;;                                     (define-key emacs-lisp-mode-map (kbd "RET") 'newline-and-indent)
+;;                                     (define-key lisp-interaction-mode-map (kbd "RET") 'newline-and-indent)
+;;                                     (define-key emacs-lisp-mode-map (kbd "M-RET") 'newline)
+;;                                     (define-key lisp-interaction-mode-map (kbd "M-RET") 'newline)
+;;                                     (eval-after-load "company"
+;;                                       '(progn
+;;                                          (my-change-company-backends 'company-elisp)
+;;                                          ))
+;;                                     )))
 ;; End Lisp mode
 
 ;; c-mode hooks
