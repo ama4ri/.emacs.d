@@ -1,6 +1,0 @@
-(:name tree-mode
-       :website "https://github.com/emacsmirror/emacswiki.org/blob/master/tree-mode.el"
-       :description "tree mode library"
-       :type github
-       :pkgname "emacsmirror/emacswiki.org"
-           )

@@ -11,7 +11,6 @@
       jedi-core
       elpy
       dap-mode
-;;      helm
       lsp-java
       lsp-mode
       lsp-treemacs
@@ -121,6 +120,23 @@
 ;; built it before.  Will have to look into updating later ...
 (unless (file-directory-p el-get-recipe-path-elpa)
   (el-get-elpa-build-local-recipes))
+
+
+;; hide compilation buffer when complete
+;; from http://emacs.stackexchange.com/questions/62/hide-compilation-window
+(add-hook 'compilation-finish-functions
+          (lambda (buf str)
+            (if (null (string-match ".*exited abnormally.*" str))
+                ;;no errors, make the compilation window go away in a few seconds
+                (progn
+                  (run-at-time
+                   "2 sec" nil 'delete-windows-on
+                   (get-buffer-create "*compilation*"))
+                  (run-at-time
+                   "2 sec" nil 'delete-windows-on
+                   (get-buffer-create "*Compile-Log*"))
+                  (message "No Compilation Errors!")))))
+
 
 (provide 'packages_list)
 

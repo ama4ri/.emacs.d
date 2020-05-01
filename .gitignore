@@ -33,8 +33,9 @@ Temporary Items
 el-get
 elpa
 tramp
-recipes
+recipes/
 ido.last
 ido.last~
+network-security.data
 auto-save-list
 # End of https://www.gitignore.io/api/osx
