@@ -17,6 +17,10 @@
       '(magit
         use-package
         lsp-mode
+	company ;;will provide auto complete suggestions,
+	flymake ;;will highlight warnings and errors
+	xref ;;can find the definition of a function or variable
+	eldoc ;;will show function documentation in the minibuffer
         material-theme
         ))
 
@@ -55,6 +59,8 @@
 (use-package lsp-ui
   :commands lsp-ui-mode)
 
+(setq lsp-eldoc-render-all t)
+
 ;; turnn off beeper signals
 (setq visible-bell t)
 
@@ -90,6 +96,12 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages '(use-package material-theme magit)))
 ;;(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+;; )
+(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
