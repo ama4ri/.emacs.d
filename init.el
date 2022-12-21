@@ -17,6 +17,7 @@
       '(magit
         use-package
         lsp-mode
+        yasnippet
 	company ;;will provide auto complete suggestions,
 	flymake ;;will highlight warnings and errors
 	xref ;;can find the definition of a function or variable
@@ -59,7 +60,12 @@
 (use-package lsp-ui
   :commands lsp-ui-mode)
 
+;; Show all documenttion
 (setq lsp-eldoc-render-all t)
+
+;; Drop-down auto completion
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; turnn off beeper signals
 (setq visible-bell t)
@@ -76,6 +82,16 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+
+;; #### Configure Tramp mode ####
+(setq tramp-default-method "ssh")
+
+;;######### Test addition function to open dired mode with remote host #####
+
+ (defun connect-nsc ()
+  (interactive)
+  (dired "/user@192.168.20.55:/opt"))
+;; ###############################
 
 ;;(custom-set-variables
  ;; custom-set-variables was added by Custom.
