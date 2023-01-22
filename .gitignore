@@ -37,4 +37,7 @@ recipes
 ido.last
 ido.last~
 auto-save-list
+# exclude emacs service files
+.lsp-session-v1
+transient/history.el
 # End of https://www.gitignore.io/api/osx
