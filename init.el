@@ -18,6 +18,7 @@
         use-package
         lsp-mode
         yasnippet
+        org-roam
 	company ;;will provide auto complete suggestions,
 	flymake ;;will highlight warnings and errors
 	xref ;;can find the definition of a function or variable
@@ -92,6 +93,45 @@
   (interactive)
   (dired "/user@192.168.20.55:/opt"))
 ;; ###############################
+
+;; #########################
+;; HELM - incremental search 
+;; #########################
+(require 'helm)
+
+(setq-default helm-M-x-fuzzy-match t)
+(global-set-key "\C-x\C-m" 'helm-M-x)
+(global-set-key "\C-c\C-m" 'helm-M-x)
+(define-key evil-ex-map "x" 'helm-M-x)
+
+(define-key evil-ex-map "b " 'helm-mini)
+(define-key evil-ex-map "e" 'helm-find-files)
+
+
+###########################################
+####   ORG ROME  ####
+# Whery useful tool to make notes
+##########################################
+
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "˜/RoamNotes"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  ;;(setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  ;;(require 'org-roam-protocol))
+###########################################################################
+
 
 ;;(custom-set-variables
  ;; custom-set-variables was added by Custom.
