@@ -17,8 +17,9 @@
       '(magit
         use-package
         lsp-mode
+;;	lsp-treemacs
 	lsp-ui
-      ;; company-lsp
+	projectile
         yasnippet
       ;; helm
       ;;  org-roam
@@ -46,6 +47,7 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
+
 ;; #### CONFIGURE PYTHON LSP MODE  ####
 ;; ###################################################################
 ;; # First you need to install python packages          	     #
@@ -53,28 +55,43 @@
 ;; # pip install "python-lsp-server[all]"			     #
 ;; # pip install pyls-black pyls-isort pyls-mypy        	     #
 ;; ###################################################################
-;;(use-package lsp-mode :ensure t)
-(use-package lsp
- ;; :commands 'lsp
-  ;; :ensure nil
+;; Config made from two articles:
+;; https://www.mattduck.com/lsp-python-getting-started.html
+;; https://vxlabs.com/2018/06/08/python-language-server-with-emacs-and-lsp-mode/
+;; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+(use-package lsp-mode
+
   :ensure t
   :config
+
+  (setq lsp-idle-delay 0.5
+        lsp-enable-symbol-highlighting t
+        lsp-enable-snippet nil  ;; Not supported by company capf, which is the recommended company backend
+        lsp-pyls-plugins-flake8-enabled t)
+
   ;; make sure we have lsp-imenu everywhere we have LSP
-  (require 'lsp-imenu)
-  (add-hook 'lsp-after-open-hook 'lsp-enable-imenu)  
+
+  ;; This section does not work !!!!!!!!!!
+  ;;(require 'lsp-imenu)
+  ;;(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)  
+
+  ;; !!!!!!!!!!!!!!!!!!!!!!! Need to fix it   !!!!!!!!!!!!!!!!!!
+  ;;  https://vxlabs.com/2018/06/08/python-language-server-with-emacs-and-lsp-mode/
+  ;; ############################################################################
   ;; get lsp-python-enable defined
   ;; NB: use either projectile-project-root or ffip-get-project-root-directory
   ;;     or any other function that can be used to find the root directory of a project
-  (lsp-define-stdio-client lsp-python "python"
-                           #'projectile-project-root
-                           '("pyls"))
+    ;;(lsp-define-stdio-client lsp-python "python"
+    ;;                         #'projectile-project-root
+    ;;                         '("pyls"))
 
+  
   ;; make sure this is activated when python-mode is activated
   ;; lsp-python-enable is created by macro above 
   (add-hook 'python-mode-hook
             (lambda ()
-              (lsp-python-enable)))
-
+              (lsp)))
   ;; lsp extras
   (use-package lsp-ui
     :ensure t
@@ -82,20 +99,29 @@
     (setq lsp-ui-sideline-ignore-duplicate t)
     (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
-;; NB: only required if you prefer flake8 instead of the default
+  ;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;(use-package company
+  ;;:hook (scala-mode . company-mode)
+  ;;:config
+  ;;(setq lsp-completion-provider :capf))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+  ;; NB: only required if you prefer flake8 instead of the default
   ;; send pyls config via lsp-after-initialize-hook -- harmless for
   ;; other servers due to pyls key, but would prefer only sending this
   ;; when pyls gets initialised (:initialize function in
   ;; lsp-define-stdio-client is invoked too early (before server
   ;; start)) -- cpbotha
+      
+  ;; (defun lsp-set-cfg ()
+  ;;  (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
+  ;;    ;; TODO: check lsp--cur-workspace here to decide per server / project
+  ;;    (lsp--set-configuration lsp-cfg)))
 
- 
-   (defun lsp-set-cfg ()
-    (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
-      ;; TODO: check lsp--cur-workspace here to decide per server / project
-      (lsp--set-configuration lsp-cfg)))
-
-   (add-hook 'lsp-after-initialize-hook 'lsp-set-cfg)) 
+  ;;(add-hook 'lsp-after-initialize-hook 'lsp-set-cfg)
+  )
 
 ;; ########### END LSP CONFIG  ###################
 
@@ -205,3 +231,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'narrow-to-region 'disabled nil)
